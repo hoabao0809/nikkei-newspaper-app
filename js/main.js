@@ -46,7 +46,7 @@ $(document).ready(function () {
    * @description Hàm render tin tức ra màn hình homepage sau khi gọi API
    */
 
-  let arrayList
+  let arrayList;
 
   function renderHeadlines() {
     $.ajax({
@@ -58,7 +58,6 @@ $(document).ready(function () {
         $('#headlines__list').html('').show();
 
         renderHTML(result.articles, '#headlines__list');
-       
       },
     });
   }
@@ -80,7 +79,7 @@ $(document).ready(function () {
       type: 'get',
       cache: false,
       success: function (result) {
-        arrayList = result.articles
+        arrayList = result.articles;
         $('#headlines__list').html('');
         renderSort(result.totalArticles, 'hideBtn', 'showBtn');
 
@@ -99,12 +98,9 @@ $(document).ready(function () {
     });
   }
 
-  console.log(arrayList);
-
   // =================== Xử lý sự kiện click vào icon Sort tin tức theo gần nhất / cũ nhất ========================
   // Sử dụng event delegation để kiểm tra thuộc tính data-action của icon được click thuộc latest hay oldest
   $('#search__results').on('click', '.sortBtn', function (event) {
-    console.log(arrayList);
     event.preventDefault();
     let action = $(this).attr('data-action');
 
